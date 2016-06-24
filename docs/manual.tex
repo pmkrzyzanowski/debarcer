@@ -83,7 +83,7 @@ This file only contains reads which were from UID families of depth 20-30, inclu
 
 \subsection{Automating Analyses}
 
-To help automate this whole process, the \\texttt{populateWorkDirectory.pl} script in the 
+To help automate this whole process, the \\\texttt{populateWorkDirectory.pl} script in the 
 debarcer 'src' directory can create a results hierarchy based on a
 directory of fastq files and write the appropriate run scripts:
 
@@ -96,17 +96,29 @@ directory of fastq files and write the appropriate run scripts:
 \end{verbatim}
 
 
-\begin{comment}
 \section{Workflow}
+
+
 
 % from http://www.texample.net/tikz/examples/simple-flow-chart/
 % Define block styles
-\tikzstyle{decision} = [diamond, draw, fill=blue!20, 
-    text width=4.5em, text badly centered, node distance=3cm, inner sep=0pt]
-\tikzstyle{block} = [rectangle, draw, fill=blue!20, 
-    text width=5em, text centered, rounded corners, minimum height=4em]
-\tikzstyle{line} = [draw, -latex']
-\tikzstyle{cloud} = [draw, ellipse,fill=red!20, node distance=3cm,
+\tikzstyle{decision} = [diamond, draw, 
+	fill=blue!20, 
+    text width=4.5em, 
+	text badly centered, 
+	node distance=3cm, 
+	inner sep=0pt]
+\tikzstyle{block} = [rectangle, draw, 
+	fill=blue!20, 
+    text width=7em, 
+	text centered, 
+	rounded corners, 
+	minimum height=4em]
+\tikzstyle{line} = [
+	draw, -latex']
+\tikzstyle{cloud} = [draw, ellipse,
+	fill=red!20, 
+	node distance=3cm,
     minimum height=2em]
 
 \begin{center}    
@@ -114,12 +126,12 @@ directory of fastq files and write the appropriate run scripts:
     % Place nodes
     \node [block] (align) {Perform bwa alignment};
     \node [cloud, left of=align] (fastq) {.fastq};
-    \node [cloud, below of=align, node distance=3cm] (bam) {.bam};
-    \node [block, below of=bam, node distance=3cm] (consensusY) {Generate consensus Y sequences from BAM};
+    \node [cloud, below of=align, node distance=2cm] (bam) {.bam};
+    \node [block, below of=bam, node distance=2cm] (consensusY) {Generate consensus Y sequences from BAM};
     \node [block, left of=consensusY, node distance=3cm] (consensusX) {Generate consensus X sequences from BAM};
     \node [block, right of=consensusY, node distance=3cm] (consensusZ) {Generate consensus Z sequences from BAM};
     \node [block, below of=consensusY, node distance=3cm] (aggregate) {Aggregate Results};
-    \node [block, below of=aggregate, node distance=3cm] (graphics) {Generate R graphics};
+    \node [block, below of=aggregate, node distance=2cm] (graphics) {Generate R graphics};
     % Draw edges
     \path [line] (fastq) -- (align);
     \path [line] (align) -- (bam);
@@ -133,7 +145,6 @@ directory of fastq files and write the appropriate run scripts:
     
 \end{tikzpicture}
 \end{center}
-\end{comment}
 
 
 \section{Output}
@@ -157,15 +168,31 @@ This can also be done using the \texttt{packageResults.sh} file
 in the Debarcer \texttt{tools} subdirectory. Simply execute that
 script from the root of your results hierarchy.
 
-\section{Miscellaneous}
-
-Requirements:  Consensus calling script needs at least 16G memory.
-
 \subsection{Revisions}
 
 \begin{itemize}
   \item 0.3.0:  April 7, 2016. 
-  \item 0.2.0:  July 27, 2015.  Svn Revision: 347.  
+  \item 0.2.0:  July 27, 2015.
 \end{itemize}
+
+\section{Miscellany}
+
+Requirements:  Consensus calling script needs at least 16G memory.
+
+\begin{figure}[h!]
+  \centering
+  \includegraphics[width=200px]{./docs/debarker_photo.jpg}
+  \caption{An actual debarker.}
+  \label{fig:debarker1}
+\end{figure}
+
+Figure \ref{fig:debarker1} shows a tree debarker, which is similar to 
+a giant pencil sharpener. Debarkers are used to remove the rough surface layers 
+of a tree, which usually exhibit errors generated in the tree growth process \(nicks,
+scratches, breaks, and other injuries\). Simiarly to PCR, errors generated early in tree
+growth have a bigger effect at the endpoint (tree cutting), some of which
+debarkers can't repair.
+
+
 
 \end{document}
